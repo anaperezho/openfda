@@ -7,6 +7,8 @@ import json
 SERVER="api.fda.gov"
 RESOURCE="/drug/label.json"
 skip=0
+#busco mediante el principio activo de las aspirinas
+#el limite maximo es 100 a partir de ahi ulitizo el metodo skip para que sea capaz de leer todos los medicamentos
 QUERY="/?search=active_ingredient:acetylsalicylic&limit=100&skip="
 header={'User-Agent':'http-client'}
 
