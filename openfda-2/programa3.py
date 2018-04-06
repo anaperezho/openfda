@@ -6,11 +6,12 @@ import json
 
 SERVER="api.fda.gov"
 RESOURCE="/drug/label.json"
-QUERY="/?search=active_ingredient:acetylsalicylic&limit=20"
+skip=0
+QUERY="/?search=active_ingredient:acetylsalicylic&limit=100&skip="
 header={'User-Agent':'http-client'}
 
 conexion=http.client.HTTPSConnection(SERVER)
-conexion.request("GET",RESOURCE+QUERY,None,header)
+conexion.request("GET",RESOURCE+QUERY+str(skip),None,header)
 
 datos=conexion.getresponse()
 aspirina=datos.read().decode("utf-8")
@@ -18,6 +19,7 @@ conexion.close()
 
 aspirina_json = json.loads(aspirina)
 aspirinas=aspirina_json['results']
+
 
 for aspirin in aspirinas:
     id = aspirin['id']
@@ -27,3 +29,7 @@ for aspirin in aspirinas:
         print("Nombre del fabricante:\n",nombre)
     else:
         print("Fabricante no disponible")
+
+if (len(aspirinas))==100:
+
+    skip = skip + 100
