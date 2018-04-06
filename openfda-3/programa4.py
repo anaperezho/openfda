@@ -40,11 +40,12 @@ for medicamento in resultados:
 
 import socket
 
-IP = "212.128.254.157"
+IP = "0.0.0.0"
 PORT = 8000
+#numero maximo de peticiones
 MAX_OPEN_REQUEST = 5
 
-
+#definimos la funcion para el cliente
 def paraelcliente(clientsocket):
 
     contenido = """
@@ -55,10 +56,11 @@ def paraelcliente(clientsocket):
     </pre>
     </html>
     """
-
+    # -- Indicamos primero que todo OK
     linea_inicial = "HTTP/1.1 200 OK\n"
     cabecera = "Content-Type: text/html\n"
     cabecera += "Content-Length: {}\n".format(len(str.encode(contenido)))
+    #  Creamos el mensaje uniendo todas sus partes
     mensaje_respuesta = str.encode(linea_inicial + cabecera + "\n" + contenido)
     clientsocket.send(mensaje_respuesta)
 
@@ -66,12 +68,14 @@ def paraelcliente(clientsocket):
 
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 serversocket.bind((IP, PORT))
+#le ponemos a escuchar
 serversocket.listen(MAX_OPEN_REQUEST)
 
 while True:
     print("Esperando cliente en IP", IP, " Puerto:", PORT)
     (clientsocket, addressclient) = serversocket.accept()
     print("Peticion recibida:", addressclient)
+    #llamada a la funcion para el cliente
     paraelcliente(clientsocket)
     clientsocket.close()
 
