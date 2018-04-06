@@ -6,6 +6,7 @@ import json
 SERVER="api.fda.gov"
 RESOURCE="/drug/label.json"
 header={'User-Agent':'http-client'}
+#establezco limite 10 para que no me salga un solo medicamento por defecto
 limite='?limit=10'
 conexion=http.client.HTTPSConnection(SERVER)
 conexion.request("GET",RESOURCE+limite,None,header)
@@ -15,7 +16,7 @@ conexion.close()
 
 medicamentos_json=json.loads(medicamentos)
 resultados=medicamentos_json['results']
-
+#bunle para imprimir los 10
 for medicamento in resultados:
 
     id=medicamento['id']
