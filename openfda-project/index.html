@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Practica final Ana Perez</title>
+</head>
+<body>
+    <h1>List Companies</h1>
+    <form action="listCompanies" method="get">
+        Limit: <input type="text" name="limit" value="1">
+        <button type="submit"> List Companies</button>
+    </form>    
+    <h1>Search Companies</h1>  
+    <form action = "searchCompany" method="get">
+        Company: <input type="text" name="manufacturer_name" value="bayer">
+        Limit: <input type="text" name="limit" value="1">
+        <button type="submit" >Search company</button>
+    </form>
+    <h1>List Drugs</h1>
+    <form action="listDrugs" method="get">
+        Limit: <input type="text" name="limit" value="1">
+        <button type="submit"> List Drugs</button>
+    </form>
+    <h1>Search Drugs</h1>  
+    <form action = "searchDrug" method="get">
+        Active ingredient: <input type="text" name="active_ingredient" value="acetylsalicylic">
+        Limit: <input type="text" name="limit" value="1">
+        <button type="submit" >Search drug</button>
+    </form>
+    <h1>Warning</h1>  
+    <form action = "listWarnings" method="get">
+        Limit: <input type="text" name="limit" value="1">
+        <button type="submit" >List Warning</button>
+    </form>
+</body>
+</html>
