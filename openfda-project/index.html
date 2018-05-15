@@ -5,9 +5,13 @@
 </head>
 <body>
     <h1>List Companies</h1>
+    <!--el action es por lo que vamos a preguntar en el server.py -->
+    <!--los datos del formulario los podemos mandar con el metodo get o post, en este caso utilizamos get -->
     <form action="listCompanies" method="get">
         Limit: <input type="text" name="limit" value="1">
+        <!--establezco unos valores por defecto estos se podrán modificar en la pagina -->
         <button type="submit"> List Companies</button>
+        <!--con submit enviamos todos los datos del form al server--> 
     </form>    
     <h1>Search Companies</h1>  
     <form action = "searchCompany" method="get">
